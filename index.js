@@ -33,10 +33,3 @@ function turnCorner() {
 }
 
 
-const game = () => {
-
-};
-
-function game() {
-
-};
