@@ -1,58 +1,38 @@
 // Elements
 const storyLine = document.getElementById('storyLine');
+const nextBtn = document.getElementById('next');
 const buttonOne = document.getElementById('btnOne');
 const buttonTwo = document.getElementById('btnTwo');
 const picture = document.getElementById('image');
 
 // Initial button setup
+nextBtn.onclick = () => dio2();
 buttonOne.onclick = () => takeStairs();
 buttonTwo.onclick = () => takeDoor();
 
 // -------- Functions -------- //
+function typeWriter(text, elementId, speed = 50) {
+    let i = 0;
+    const element = document.getElementById(elementId);
+    element.innerText = ""; //clears paragraph before tying
 
-function takeStairs() {
-    picture.src = "pexels-photo-2556788.webp";
-    storyLine.innerText = `You decide to take your chances with the stairs. As you make your way up the short staircase, 
-every step feels like a eternity as you try your best not to alert anyone who may be up there. When you get to the top of the stairs, 
-you extend your clammy hand and grasp the doorknob. Slowly opening the door, you find yourself in a dimly lit hallway. 
-To your left, the hallway goes on for some time before breaking off to the right. To your left, you see another door just 10 feet from where you stand. 
-Listening closely, you think you can hear whimpering from the other side. What path will you take?`;
-
-    buttonOne.innerText = "Head down the long hallway and see what's around the corner.";
-    buttonTwo.innerText = "Turn right to the nearest door and investigate.";
-
-    buttonOne.onclick = () => turnCorner();
-    buttonTwo.onclick = () => whimpering();
+    function typing() {
+        if (i < text.length) {
+            element.innerText += text.charAt(i)
+            i++;
+            setTimeout(typing, speed); //controls delay between characters
+        }
+    }
+    typing();
 }
 
-function takeDoor() {
-    picture.src = "Everything-you-need-to-know-about-the-Amazon-Rainforest-thumbnail-fa90818.jpg";
-    storyLine.innerText = `You realize the door most likely leads outside. Because you don't know where you are, you decide 
-going through that door might help you get your bearings. As you push it open, you are confronted with a vast jungle below. 
-In the distance, you see the blue ocean. To your left, you notice two separate stairways: one goes up, the other goes down into the jungle. 
-Which path will you take?`;
+typeWriter("Welcome to *world name*. In this world violence and trickery are sadly a common way of life. Brought on by eons of war, the current citizens of *world name* tragically can not recall what life was like before the endless bloodshed. Through endless war two families have risen above the rest becoming the two main players vying for control of all of *world name*. Sadly these two familes, house Syther and house Mordom both relish in the dark arts, and although they may have different customs and beliefs, their end game remains the same: COMPLETE CONTROL OVER LIFE AND FREEDOM.", "storyLine", 10)
 
-    buttonOne.innerText = "Take the spiral staircase upstairs and see if you can find a phone.";
-    buttonTwo.innerText = "Make a dash for the jungle and try to escape.";
+function dio2() {
+    nextBtn.onclick = () => typeSelection();
+    buttonOne.style.display = "none"; 
+    buttonTwo.style.display = "none";
 
-    buttonOne.onclick = () => spiralStaircase();
-    buttonTwo.onclick = () => jungleRun();
+    typeWriter("this is totally working", "storyLine", 90)
 }
 
-// -------- Placeholder functions for safe testing -------- //
-
-function turnCorner() {
-    storyLine.innerText = "As you walk down the hallway, you notice how immaculate the walls are. (More story coming soon!)";
-}
-
-function whimpering() {
-    storyLine.innerText = "You approach the door and hear whimpering inside. (More story coming soon!)";
-}
-
-function spiralStaircase() {
-    storyLine.innerText = "You climb the spiral staircase, looking for a phone. (More story coming soon!)";
-}
-
-function jungleRun() {
-    storyLine.innerText = "You dash into the jungle, hoping to escape undetected. (More story coming soon!)";
-}
