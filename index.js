@@ -43,7 +43,7 @@ typeWriter("Welcome to Veilmora. In this world, violence and trickery are, sadly
 });
 
 function dio2() {
-    typeWriter("In this dark and new disturbing world, only a few areas of hope remain gaurded by fractured remnents of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completly been taken over by Syther and Mordom respectively with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediatly. House Steel, known for their battle prowess thoughout history is the last remaining stronghold for good, but with the constant assualt from both House Syther and Mordom, hope is fading fast!", "storyLine", 10, () => {
+    typeWriter("In this dark and new disturbing world, only a few areas of hope remain gaurded by fractured remnents of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completly been taken over by Syther and Mordom respectively with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediatly. House Steel, known for their battle prowess thoughout history is the last remaining stronghold for good, but with the constant assualt from both House Syther and Mordom, hope is fading fast!", "storyLine", 70, () => {
         //buttons fade in
         nextBtn.style.opacity = 0;
         buttonOne.style.opacity = 0;
