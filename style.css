@@ -15,7 +15,7 @@ body {
 
 #storyLine {
     font-family:  monospace;
-    font-size: larger;
+    font-size: xx-large;
     color: aliceblue;
     white-space: pre-wrap;  /*keeps line breaks */
 }
@@ -30,31 +30,36 @@ body {
     text-align: center;
     color: aliceblue;
     background-color: black;
-    }
+}
 
-    img {
-        max-width: 100%;
-        height: auto;
+img {
+    max-width: 100%;
+    height: auto;
 
-    }
+}
 
-    button {
-        width: 80%;
-        max-width: 400px;  
-        margin: 10px 0;
-        padding: 10px;  
-        font-size: 1em;
-        font-weight: bolder;
-        color: white;
-        background-color: black;
-        border-color: white;
-    }
+#next {
+    transition: opacity 5s ease; /* fade over 1 second */
+}
 
-    button:hover {
-        cursor: pointer;
-        background-color: red;
-    }
+button {
+    width: 80%;
+    max-width: 400px;  
+    margin: 10px 0;
+    padding: 10px;  
+    font-size: 1em;
+    font-weight: bolder;
+    color: white;
+    background-color: black;
+    border-color: white;
+}
 
-    p {
-        font-size: larger;
-    }
+button:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+p {
+    font-size: larger;
+}
+

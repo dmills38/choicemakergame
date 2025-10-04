@@ -6,12 +6,15 @@ const buttonTwo = document.getElementById('btnTwo');
 const picture = document.getElementById('image');
 
 // Initial button setup
-nextBtn.onclick = () => dio2();
-buttonOne.onclick = () => takeStairs();
-buttonTwo.onclick = () => takeDoor();
+nextBtn.onclick = () => {
+    nextBtn.style.display = "none"
+    buttonOne.style.display = "none"
+    buttonTwo.style.display = "none"
+    dio2();
+};
 
 // -------- Functions -------- //
-function typeWriter(text, elementId, speed = 50) {
+function typeWriter(text, elementId, speed = 50, callback) {
     let i = 0;
     const element = document.getElementById(elementId);
     element.innerText = ""; //clears paragraph before tying
@@ -21,18 +24,65 @@ function typeWriter(text, elementId, speed = 50) {
             element.innerText += text.charAt(i)
             i++;
             setTimeout(typing, speed); //controls delay between characters
+        } else {
+            if (callback) callback() //runs callback when done
         }
     }
     typing();
 }
 
-typeWriter("Welcome to *world name*. In this world violence and trickery are sadly a common way of life. Brought on by eons of war, the current citizens of *world name* tragically can not recall what life was like before the endless bloodshed. Through endless war two families have risen above the rest becoming the two main players vying for control of all of *world name*. Sadly these two familes, house Syther and house Mordom both relish in the dark arts, and although they may have different customs and beliefs, their end game remains the same: COMPLETE CONTROL OVER LIFE AND FREEDOM.", "storyLine", 10)
+typeWriter("Welcome to Veilmora. In this world, violence and trickery are, sadly, a common way of life. Born of eons of war, the current citizens of Veilmora can no longer recall what life was like before the endless bloodshed. Through these ceaseless conflicts, two families have risen above all others, becoming the principal players vying for control of the entire land. Tragically, both House Syther and House Mordom revel in the dark arts, and though their customs and beliefs may differ, their ultimate goal remains the same: COMPLETE CONTROL OVER LIFE AND FREEDOM.", "storyLine", 70, () => {
+    nextBtn.style.display = "block";
+    nextBtn.style.opacity = 0;
+
+    nextBtn.style.transition = "opacity 11s ease";
+
+    setTimeout(() => {
+        nextBtn.style.opacity = 1;
+    }, 10)
+});
 
 function dio2() {
-    nextBtn.onclick = () => typeSelection();
-    buttonOne.style.display = "none"; 
-    buttonTwo.style.display = "none";
+    typeWriter("In this dark and new disturbing world, only a few areas of hope remain gaurded by fractured remnents of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completly been taken over by Syther and Mordom respectively with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediatly. House Steel, known for their battle prowess thoughout history is the last remaining stronghold for good, but with the constant assualt from both House Syther and Mordom, hope is fading fast!", "storyLine", 10, () => {
+        //buttons fade in
+        nextBtn.style.opacity = 0;
+        buttonOne.style.opacity = 0;
+        buttonTwo.style.opacity = 0;
 
-    typeWriter("this is totally working", "storyLine", 90)
+        nextBtn.style.display = "block";
+        buttonOne.style.display = "none";
+        buttonTwo.style.display = "none";
+
+        nextBtn.style.transition = "opacity 11s ease"
+        buttonOne.style.transition = "opacity 11s ease"
+        buttonTwo.style.transition = "opacity 11s ease"
+
+        setTimeout(() => {
+            nextBtn.style.opacity = 1;
+            buttonOne.style.opacity = 1;
+            buttonTwo.style.opacity = 1;
+        }, 10);
+    });
+
+    buttonOne.innerText = "";
+    buttonTwo.innerText = "";
+    nextBtn.onclick = () => {
+        nextBtn.style.display = "none"
+    buttonOne.style.display = "none"
+    buttonTwo.style.display = "none"
+    dio2();
+    };
+    buttonOne.onclick = () => {
+        nextBtn.style.display = "none"
+    buttonOne.style.display = "none"
+    buttonTwo.style.display = "none"
+    dio2();
+    };
+    buttonTwo.onclick = () => {
+        nextBtn.style.display = "none"
+    buttonOne.style.display = "none"
+    buttonTwo.style.display = "none"
+    dio2();
+    };
 }
 
