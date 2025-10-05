@@ -87,7 +87,7 @@ function dio2() {
 
 
 function welcomeToVeilmora() {
-    typeWriter("This, young hero, is where our story begins....Welcome to Veilmora...", 70, () => {
+    typeWriter("This, young hero, is where our story begins....Welcome to Veilmora...", "storyLine", 70,  () => {
         //buttons fade in
         nextBtn.style.opacity = 0;
         buttonOne.style.opacity = 0;
@@ -130,4 +130,56 @@ function welcomeToVeilmora() {
     };
 }
 
+function chooseBackground() {
+    nextBtn.style.display = "none";
+    buttonOne.style.display = "none";
+    buttonTwo.style.display = "none";
+    
+    typeWriter(
+        "In this dark and new disturbing world, only a few areas of hope remain guarded by fractured remnants of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completely been taken over by Syther and Mordom respectively, with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediately. House Steel, known for their battle prowess throughout history, is the last remaining stronghold for good, but with the constant assault from both House Syther and Mordom, hope is fading fast!",
+        "storyLine",
+        10,
+        () => {
+            // Show next button and fade it in
+            nextBtn.style.display = "none";
+            nextBtn.style.opacity = 0;
+            buttonOne.style.display = "block";
+            buttonOne.style.opacity = 0;
+            buttonTwo.style.display = "block";
+            buttonTwo.style.opacity = 0;
+
+
+
+            // Use CSS transition for the fade
+            setTimeout(() => {
+                nextBtn.style.opacity = 1;
+                buttonOne.style.opacity = 1;
+                buttonTwo.style.opacity = 1;
+            }, 10);
+
+            // Reassign button functions AFTER fade starts
+            buttonOne.innerText = "Fighter";
+            buttonTwo.innerText = "Survivor";
+
+            nextBtn.onclick = () => {
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                welcomeToVeilmora();
+            };
+            buttonOne.onclick = () => {
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                dio2();
+            };
+            buttonTwo.onclick = () => {
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                dio2();
+            };
+        }
+    );
+}
 
