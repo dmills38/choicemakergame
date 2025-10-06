@@ -4,6 +4,7 @@ const nextBtn = document.getElementById('next');
 const buttonOne = document.getElementById('btnOne');
 const buttonTwo = document.getElementById('btnTwo');
 const picture = document.getElementById('image');
+let playerClass = null;
 
 // Initial button setup
 
@@ -168,12 +169,70 @@ function chooseBackground() {
                 welcomeToVeilmora();
             };
             buttonOne.onclick = () => {
+                playerClass = "Fighter";
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                checkclass();
+            };
+            buttonTwo.onclick = () => {
+                playerClass = "Survivor";
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                checkclass();
+            };
+        }
+    );
+}
+
+function checkclass() {
+    nextBtn.style.display = "none";
+    buttonOne.style.display = "none";
+    buttonTwo.style.display = "none";
+
+    if (playerClass == "Fighter") { 
+    typeWriter(
+        "fight.",
+        "storyLine",
+        10,
+        () => {
+            // Show next button and fade it in
+            nextBtn.style.display = "none";
+            nextBtn.style.opacity = 0;
+            buttonOne.style.display = "block";
+            buttonOne.style.opacity = 0;
+            buttonTwo.style.display = "block";
+            buttonTwo.style.opacity = 0;
+
+
+
+            // Use CSS transition for the fade
+            setTimeout(() => {
+                nextBtn.style.opacity = 1;
+                buttonOne.style.opacity = 1;
+                buttonTwo.style.opacity = 1;
+            }, 10);
+
+            // Reassign button functions AFTER fade starts
+            buttonOne.innerText = "Fighter";
+            buttonTwo.innerText = "Survivor";
+
+            nextBtn.onclick = () => {
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                welcomeToVeilmora();
+            };
+            buttonOne.onclick = () => {
+                playerClass = "Fighter";
                 nextBtn.style.display = "none";
                 buttonOne.style.display = "none";
                 buttonTwo.style.display = "none";
                 dio2();
             };
             buttonTwo.onclick = () => {
+                playerClass = "Survivor";
                 nextBtn.style.display = "none";
                 buttonOne.style.display = "none";
                 buttonTwo.style.display = "none";
@@ -181,5 +240,58 @@ function chooseBackground() {
             };
         }
     );
+    }
+    else if (playerClass == "Survivor") {
+        typeWriter(
+        "survive",
+        "storyLine",
+        10,
+        () => {
+            // Show next button and fade it in
+            nextBtn.style.display = "none";
+            nextBtn.style.opacity = 0;
+            buttonOne.style.display = "block";
+            buttonOne.style.opacity = 0;
+            buttonTwo.style.display = "block";
+            buttonTwo.style.opacity = 0;
+
+
+
+            // Use CSS transition for the fade
+            setTimeout(() => {
+                nextBtn.style.opacity = 1;
+                buttonOne.style.opacity = 1;
+                buttonTwo.style.opacity = 1;
+            }, 10);
+
+            // Reassign button functions AFTER fade starts
+            buttonOne.innerText = "Fighter";
+            buttonTwo.innerText = "Survivor";
+
+            nextBtn.onclick = () => {
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                welcomeToVeilmora();
+            };
+            buttonOne.onclick = () => {
+                playerClass = "Fighter";
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                dio2();
+            };
+            buttonTwo.onclick = () => {
+                playerClass = "Survivor";
+                nextBtn.style.display = "none";
+                buttonOne.style.display = "none";
+                buttonTwo.style.display = "none";
+                dio2();
+            };
+        }
+    );
+    }
 }
+
+
 
