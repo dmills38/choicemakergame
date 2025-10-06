@@ -33,10 +33,14 @@ body {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-
+  width: 600px;           /* Fixed width */
+  height: 300px;          /* Fixed height */
+  object-fit: cover;      /* Ensures image fills box without distortion */
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-bottom: 20px;    /* Space below the image before the text */
 }
+
 
 #next {
     transition: opacity 5s ease; /* fade over 1 second */
