@@ -197,17 +197,16 @@ function checkclass() {
     buttonTwo.style.display = "none";
 
     if (playerClass == "Fighter") { 
-    typeWriter(
-        "fight.",
+    typeWriter("Since you were born all you know is War. Living on the outskirts of Castle Steel, you have known death, famine and cruelty your whole life. Having to fight for the meager scraps you call your own to survive, you have turned into a formidiable fighter in your own right. Although still green behind the ears and knowing nothing of the horrors of bloody battle, everyone in these wrteched slums cannot deny that you have a air of courage and bravery about you that is hard to match. You are a FIGHTER.",
         "storyLine",
         10,
         () => {
             // Show next button and fade it in
-            nextBtn.style.display = "none";
+            nextBtn.style.display = "block";
             nextBtn.style.opacity = 0;
-            buttonOne.style.display = "block";
+            buttonOne.style.display = "none";
             buttonOne.style.opacity = 0;
-            buttonTwo.style.display = "block";
+            buttonTwo.style.display = "none";
             buttonTwo.style.opacity = 0;
 
 
@@ -220,6 +219,7 @@ function checkclass() {
             }, 10);
 
             // Reassign button functions AFTER fade starts
+            nextBtn.innerText = ">"
             buttonOne.innerText = "Fighter";
             buttonTwo.innerText = "Survivor";
 
@@ -227,7 +227,7 @@ function checkclass() {
                 nextBtn.style.display = "none";
                 buttonOne.style.display = "none";
                 buttonTwo.style.display = "none";
-                welcomeToVeilmora();
+                kitchenDio();
             };
             buttonOne.onclick = () => {
                 playerClass = "Fighter";
@@ -253,11 +253,11 @@ function checkclass() {
         10,
         () => {
             // Show next button and fade it in
-            nextBtn.style.display = "none";
+            nextBtn.style.display = "block";
             nextBtn.style.opacity = 0;
-            buttonOne.style.display = "block";
+            buttonOne.style.display = "none";
             buttonOne.style.opacity = 0;
-            buttonTwo.style.display = "block";
+            buttonTwo.style.display = "none";
             buttonTwo.style.opacity = 0;
 
 
@@ -277,7 +277,7 @@ function checkclass() {
                 nextBtn.style.display = "none";
                 buttonOne.style.display = "none";
                 buttonTwo.style.display = "none";
-                welcomeToVeilmora();
+                kitchenDio();
             };
             buttonOne.onclick = () => {
                 playerClass = "Fighter";
