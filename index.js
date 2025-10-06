@@ -46,7 +46,7 @@ function dio2() {
     buttonTwo.style.display = "none";
     
     typeWriter(
-        "In this dark and new disturbing world, only a few areas of hope remain guarded by fractured remnants of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completely been taken over by Syther and Mordom respectively, with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediately. House Steel, known for their battle prowess throughout history, is the last remaining stronghold for good, but with the constant assault from both House Syther and Mordom, hope is fading fast!",
+        "In this dark and disturbing reality, only a few areas of hope remain guarded by fractured remnants of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completely been taken over by Syther and Mordom respectively, with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediately. House Steel, known for their battle prowess throughout history, is the last remaining stronghold for good, but with the constant assault from both House Syther and Mordom, hope is fading fast!",
         "storyLine",
         10,
         () => {
@@ -87,7 +87,7 @@ function dio2() {
 
 
 function welcomeToVeilmora() {
-    typeWriter("This, young hero, is where our story begins....Welcome to Veilmora...", "storyLine", 70,  () => {
+    typeWriter("In a small village, on the outskirts of Castle Steel, a young boy by the name of Dante is living in a dilapadated shell of a home with his grandmother, Namko. The house itself is no more then one big room with Dantes straw bed and belonging on one side of the room and his grandmothers on the other. In the middle of the room, on the dirt floor lies a giant cooking cauldron, where the pair sit in wait for their humble squirell stew to finish. This, young hero, is where our story begins. How it ends is entirely up to you...Welcome to Veilmora...", "storyLine", 10,  () => {
         //buttons fade in
         nextBtn.style.opacity = 0;
         buttonOne.style.opacity = 0;
@@ -136,7 +136,7 @@ function chooseBackground() {
     buttonTwo.style.display = "none";
     
     typeWriter(
-        "In this dark and new disturbing world, only a few areas of hope remain guarded by fractured remnants of a force of light that used to rule over all of Veilmora before corruption, conspiracies, and greed contributed to its downfall. This force made up of Houses Steel, Raven, and Cloud were referred to as the Bright Trinity before the fall. Houses Raven and Cloud have completely been taken over by Syther and Mordom respectively, with anyone believed or even suspected of having current & previous loyalty to Raven or Cloud executed immediately. House Steel, known for their battle prowess throughout history, is the last remaining stronghold for good, but with the constant assault from both House Syther and Mordom, hope is fading fast!",
+        "Please SELECT your BACKGROUND. You will still have control over every desision in the game but your background may affect some outcomes. For better or worse? Well thats for you to find out.",
         "storyLine",
         10,
         () => {
