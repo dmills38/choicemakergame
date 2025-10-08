@@ -197,7 +197,7 @@ function checkclass() {
     buttonTwo.style.display = "none";
 
     if (playerClass == "Fighter") { 
-    typeWriter("Since you were born all you know is War. Living on the outskirts of Castle Steel, you have known death, famine and cruelty your whole life. Having to fight for the meager scraps you call your own to survive, you have turned into a formidiable fighter in your own right. Although still green behind the ears and knowing nothing of the horrors of bloody battle, everyone in these wrteched slums cannot deny that you have a air of courage and bravery about you that is hard to match. You are a FIGHTER.",
+    typeWriter("Since you were born all you know is War. Living on the outskirts of Castle Steel, you have known death, famine and cruelty your whole life. Having to fight for the meager scraps you call your own to survive, you have turned into a formidiable fighter in your own right. Although still green behind the ears and knowing nothing of the horrors of bloody battle, everyone in these wrteched slums cannot deny that you have a air of courage and bravery about you that is hard to match. You are a FIGHTER!",
         "storyLine",
         10,
         () => {
@@ -248,7 +248,7 @@ function checkclass() {
     }
     else if (playerClass == "Survivor") {
         typeWriter(
-        "survive",
+        "Ever since you can remember survival was in you DNA. Growing up in the slums of Castle Steel, you quickly came to realize that wits and silver toungue were leagues above the rest of your peers and always came through in sticky or desperate situation. Instead of fighting over supplies you could convince others why you needed the most. Rather then using strength to get your way, you could get others to rally around your cause and support your desicions. This no doubt leaves some people to praise your strategic mind, while others see you as nothing more then a silver tounged devil. You are a SURVIVOR!",
         "storyLine",
         10,
         () => {
