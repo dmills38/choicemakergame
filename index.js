@@ -47,7 +47,7 @@ function assignButtonActions(nextAction, oneAction, twoAction) {
   buttonTwo.onclick = twoAction || (() => {});
 }
 
-function playDialogue(dialogues, callback) {
+function playDialogue(dialogues, callback, pause = 1000) { // pause in ms between lines
   let index = 0;
 
   function nextLine() {
@@ -72,9 +72,10 @@ function playDialogue(dialogues, callback) {
         );
       } else {
         // Normal dialogue line
-        typeWriter(`${line.speaker}: ${line.text}`, "storyLine", 30, () => {
+        typeWriter(`${line.speaker}: ${line.text}`, "storyLine", 170, () => {
           index++;
-          nextLine();
+          // Wait before moving to next line
+          setTimeout(nextLine, pause);
         });
       }
     } else if (callback) callback();
@@ -83,6 +84,7 @@ function playDialogue(dialogues, callback) {
   hideAllButtons();
   nextLine();
 }
+
 
 
 // ----- Scene 1 -----
@@ -215,18 +217,22 @@ function chooseClass() {
 
 // ----- Scene 6 -----
 function kitchenDio() {
-  setSceneImage("images/kitchen.png");
+  setSceneImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqs9gLt8O9zqyBEg-rI0-Ik6fpTEVYDERqSw&s");
 
   const kitchenDialogues = [
-    { speaker: "Dante", text: "Grandmother, the stew smells ready!" },
-    { speaker: "Namko", text: "Patience, child. A good meal takes time." },
-    { speaker: "Dante", text: "But I'm starving!" },
-    { speaker: "Namko", text: "Then you must learn to wait. Hunger builds character." },
+    { speaker: "Dante", text: "Man I'm so hungry! Cant believe we got some meat to throw in the pot today! This is gonna be good!" },
+    { speaker: "Namko", text: "Patience, child. A good meal takes time. I'd say we have another 15 minutes before it is ready to eat." },
+    {speaker: "Dante", text: "*Dante rolls his eyes sarcastically*"},
+    { speaker: "Dante", text: "15 minutes!!! If I dont make it Grams, it was nice to know you." },
+    {speaker: "Namko", text: "*Namko cant help but chuckle at her grandsons sarcasm*"},
+    { speaker: "Namko", text: "You've always been a funny one boy, but trust me when I say, hunger will build character." },
+    {speaker: "Namko", text: "While we wait, why dont you go and put some sandbags at the door so the rain doesnt flood us too badly this time."},
+    {speaker: "Narrator", text: "Due to the where their home was situated, every time heavy rains would overcome the village, rain water would sometimes seep under front door of their home, turning thier dirt floor into a giant puddle of mud."},
     {
       decision: true,
       options: [
         { text: "Sneak a taste", action: sneakTaste },
-        { text: "Wait patiently", action: waitPatiently }
+        { text: "Stack sandbags", action: stacksandbags }
       ]
     }
   ];
@@ -235,7 +241,7 @@ function kitchenDio() {
 }
 
 function sneakTaste() {
-  setSceneImage("images/stew.png");
+  setSceneImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqs9gLt8O9zqyBEg-rI0-Ik6fpTEVYDERqSw&s");
   const sneakDialogues = [
     { speaker: "Dante", text: "*sneaks a spoonful when Namko isn’t looking*" },
     { speaker: "Namko", text: "Dante! I saw that!" },
@@ -244,16 +250,19 @@ function sneakTaste() {
   playDialogue(sneakDialogues, nextScene);
 }
 
-function waitPatiently() {
-  setSceneImage("images/fireplace.png");
+function stacksandbags() {
+  setSceneImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqs9gLt8O9zqyBEg-rI0-Ik6fpTEVYDERqSw&s");
   const waitDialogues = [
-    { speaker: "Dante", text: "I'll wait, grandmother." },
+    { speaker: "Dante", text: "Yeah your right. Dont want to get flooded out like last time." },
+    {speaker: "Narrator", text: "Dante heads over to the foot of his bed where three ten pound sandbags sit. As he goes back for the final sandbag, the pair is startled to hear a loud banging coming from the front door. Since Dante can remember, no one has ever knocked on their door. No visitors, no Government EVER. Who could be paying the pair a visit in such foul weather?"},
+    {speaker: "Narrator", text: "Dantes eyes dart towards his grandmother who strangley has a look Dante has never seen before. Is this fear? Worry?"},
     { speaker: "Namko", text: "Good. Patience is a rare virtue these days." }
   ];
   playDialogue(waitDialogues, nextScene);
 }
 
 function nextScene() {
+    setSceneImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3zyGFSgIvQaft7Xgp1mBUYbFiLcvnARHW8Q&s")
   typeWriter("The storm outside grows louder as you finish your meal...", "storyLine", 20, () => {
     fadeInElements(nextBtn);
     nextBtn.innerText = "Continue";
