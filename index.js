@@ -6,6 +6,70 @@ const buttonTwo = document.getElementById("btnTwo");
 const picture = document.getElementById("image");
 let playerClass = null;
 
+// ----- Audio Setup -----
+let backgroundAudio = new Audio();
+let currentBackgroundTrack = "";
+let fadeDuration = 2000; // fade time in milliseconds (2 seconds)
+
+// Smoothly switch or continue background music
+function setBackgroundAudio(src, volume = 0.5) {
+  // Stop if no music requested
+  if (!src) {
+    fadeOut(backgroundAudio);
+    currentBackgroundTrack = "";
+    return;
+  }
+
+  // If same track is already playing, do nothing
+  if (currentBackgroundTrack === src && !backgroundAudio.paused) {
+    return;
+  }
+
+  // Otherwise, fade out old and start new
+  const newAudio = new Audio(src);
+  newAudio.loop = true;
+  newAudio.volume = 0; // start silent
+  newAudio.play();
+
+  // Fade out old track
+  fadeOut(backgroundAudio);
+
+  // Fade in new one
+  fadeIn(newAudio, volume);
+
+  // Replace reference
+  backgroundAudio = newAudio;
+  currentBackgroundTrack = src;
+}
+
+// ---- Helper functions ----
+function fadeOut(audio) {
+  if (!audio || audio.paused) return;
+  const fadeStep = audio.volume / (fadeDuration / 100);
+  const fade = setInterval(() => {
+    if (audio.volume > fadeStep) {
+      audio.volume -= fadeStep;
+    } else {
+      clearInterval(fade);
+      audio.pause();
+      audio.src = "";
+    }
+  }, 100);
+}
+
+function fadeIn(audio, targetVolume) {
+  const fadeStep = targetVolume / (fadeDuration / 100);
+  const fade = setInterval(() => {
+    if (audio.volume < targetVolume - fadeStep) {
+      audio.volume += fadeStep;
+    } else {
+      clearInterval(fade);
+      audio.volume = targetVolume;
+    }
+  }, 100);
+}
+
+
 // ----- Utility Functions -----
 function typeWriter(text, elementId, speed = 50, callback) {
   let i = 0;
@@ -21,6 +85,25 @@ function typeWriter(text, elementId, speed = 50, callback) {
   }
   typing();
 }
+
+function playVoice(audioPath = "", volume = 1) {
+  const voice = document.getElementById("voiceAudio");
+  if (audioPath) {
+    voice.src = audioPath;
+    voice.volume = volume;
+    voice.play();
+  }
+}
+
+function playSFX(audioPath = "", volume = 1) {
+  const sfx = document.getElementById("sfxAudio");
+  if (audioPath) {
+    const effect = new Audio(audioPath); // allows overlapping SFX
+    effect.volume = volume;
+    effect.play();
+  }
+}
+
 
 function setSceneImage(imagePath = "") {
   picture.src = imagePath;
@@ -53,6 +136,13 @@ function playDialogue(dialogues, callback, pause = 1000) { // pause in ms betwee
   function nextLine() {
     if (index < dialogues.length) {
       const line = dialogues[index];
+
+      if (line.image) setSceneImage(line.image);
+
+      if (line.audio) playVoice(line.audio);
+
+      if (line.sfx) playSFX(line.sfx);
+
       if (line.decision) {
         // If it's a choice, show buttons
         fadeInElements(buttonOne, buttonTwo);
@@ -72,7 +162,7 @@ function playDialogue(dialogues, callback, pause = 1000) { // pause in ms betwee
         );
       } else {
         // Normal dialogue line
-        typeWriter(`${line.speaker}: ${line.text}`, "storyLine", 170, () => {
+        typeWriter(`${line.speaker}: ${line.text}`, "storyLine", 100, () => {
           index++;
           // Wait before moving to next line
           setTimeout(nextLine, pause);
@@ -88,6 +178,7 @@ function playDialogue(dialogues, callback, pause = 1000) { // pause in ms betwee
 
 
 // ----- Scene 1 -----
+setBackgroundAudio("fantasy-music-lumina-143991.mp3", 1)
 setSceneImage("");
 typeWriter(
   "Welcome to Veilmora. In this world, violence and deception are, sadly, a common way of life. Born of eons of war, the current citizens of Veilmora can no longer recall what life was like before the endless bloodshed. Through these ceaseless conflicts, two families have risen above all others, becoming the principal players vying for control of the entire land. Tragically, both House Syther and House Mordom revel in the dark arts, and though their customs and beliefs may differ, their ultimate goal remains the same: COMPLETE CONTROL OVER LIFE AND FREEDOM.",
@@ -253,8 +344,8 @@ function sneakTaste() {
 function stacksandbags() {
   setSceneImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqs9gLt8O9zqyBEg-rI0-Ik6fpTEVYDERqSw&s");
   const waitDialogues = [
-    { speaker: "Dante", text: "Yeah your right. Dont want to get flooded out like last time." },
-    {speaker: "Narrator", text: "Dante heads over to the foot of his bed where three ten pound sandbags sit. As he goes back for the final sandbag, the pair is startled to hear a loud banging coming from the front door. Since Dante can remember, no one has ever knocked on their door. No visitors, no Government EVER. Who could be paying the pair a visit in such foul weather?"},
+    { speaker: "Dante", text: "Yeah your right. Dont want to get flooded out like last time.", image: "https://tse1.mm.bing.net/th/id/OIP.0NN8RBbAxalg1v4W6UzyDwHaHa?pid=Api&P=0&h=220" },
+    {speaker: "Narrator", text: "Dante heads over to the foot of his bed where three ten pound sandbags sit. As he goes back for the final sandbag, the pair is startled to hear a loud banging coming from the front door. Since Dante can remember, no one has ever knocked on their door. No visitors, no Government EVER. Who could be paying the pair a visit in such foul weather?", image: "https://tse2.mm.bing.net/th/id/OIP.yTGxpX9Sxs4U_qln998fowHaE-?pid=Api&P=0&h=220"},
     {speaker: "Narrator", text: "Dantes eyes dart towards his grandmother who strangley has a look Dante has never seen before. Is this fear? Worry?"},
     { speaker: "Namko", text: "Good. Patience is a rare virtue these days." }
   ];
